@@ -31,7 +31,18 @@
 
 <svelte:head>
 	<title>10k Switches</title>
-	<meta name="description" content="Page description" />
+	<meta
+		name="description"
+		content="Explore 10,000 interactive switches you can turn on and off in 6 vibrant colors! "
+	/>
+	<meta property="og:title" content="10k Switches" />
+	<meta
+		property="og:description"
+		content="Explore 10,000 interactive switches you can turn on and off in 6 vibrant colors!"
+	/>
+	<meta property="og:image" content="https://10kswitches.salguento.xyz/og-image.jpg" />
+	<meta property="og:url" content="https://10kswitches.salguento.xyz" />
+	<meta property="og:type" content="website" />
 </svelte:head>
 <main class="h-full w-full">
 	{@render children()}

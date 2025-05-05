@@ -4,12 +4,12 @@
 	import { supabase } from '$lib/utils/supabaseClient';
 	import type { PayloadType } from '$lib/types/payload';
 	import type { Item } from '$lib/types/item';
+	import type { PageData } from './$types';
 	import Menu from '../lib/components/menu/Menu.svelte';
 	import Switch from '../lib/components/switch/Switch.svelte';
+	import Footer from '$lib/components/footer/Footer.svelte';
 
-	export let data: { initialItems: Item[] };
-
-	let items: Item[] = data.initialItems;
+	let items: Item[];
 	let trueItems: number = 0;
 	let clickedItem: number = 0;
 	let subscription: RealtimeChannel | null = null;
@@ -81,10 +81,11 @@
 <Menu totalClicked={trueItems} userClicked={clickedItem} />
 <div class="flex h-auto w-full flex-col items-center pt-24">
 	<div
-		class="grid w-auto max-w-7xl grid-flow-row grid-cols-8 gap-2 px-4 pb-12 md:grid-cols-16 lg:grid-cols-25"
+		class="grid w-auto max-w-7xl grid-flow-row grid-cols-5 gap-2 px-4 pb-12 sm:grid-cols-8 md:grid-cols-16 xl:grid-cols-25"
 	>
 		{#each items as item (item.id)}
-			<Switch state={item.state} id={item.id} index={item.index} bind:clickedItem />
+			<Switch state={item.state} id={item.id} bind:clickedItem color={item.color} />
 		{/each}
 	</div>
 </div>
+<Footer />
