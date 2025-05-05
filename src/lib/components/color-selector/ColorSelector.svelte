@@ -81,7 +81,7 @@
 	{#if isOpen}
 		<div
 			bind:this={menu}
-			class="absolute left-0 z-10 mt-82 w-fit origin-top-right rounded-xl bg-gray-100 shadow-lg ring ring-gray-300 sm:right-0 sm:mt-28 dark:bg-gray-800 dark:ring-gray-700"
+			class="absolute left-0 z-10 mt-82 w-fit origin-top-right rounded-xl bg-gray-100 shadow-lg ring ring-gray-300 sm:right-0 sm:left-auto sm:mt-28 dark:bg-gray-800 dark:ring-gray-700"
 			role="menu"
 			aria-labelledby="menu-button"
 			tabindex="-1"
