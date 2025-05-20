@@ -35,8 +35,6 @@
 				.from('switches')
 				.update({ state: newStatus, color: $switchColorStore })
 				.eq('id', itemId);
-
-			console.log(color);
 			if (error) throw error;
 			// Update local state
 			// items = items.map((item) => (item.id === itemId ? { ...item, completed: newStatus } : item));
