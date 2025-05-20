@@ -36,8 +36,8 @@
 				.update({ state: newStatus, color: $switchColorStore })
 				.eq('id', itemId);
 
+			console.log(color);
 			if (error) throw error;
-
 			// Update local state
 			// items = items.map((item) => (item.id === itemId ? { ...item, completed: newStatus } : item));
 		} catch (error) {
@@ -58,7 +58,7 @@
 			on:click={() => updateRow(id, !state)}
 		/>
 		<div
-			class={`peer relative h-6 w-11 rounded-full bg-gray-600  after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 ${color ? `${bgColor}` : ` ${bgColor}`}`}
+			class={`peer relative h-6 w-11 rounded-full bg-gray-600  after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 ${bgColor}`}
 		></div>
 	</label>
 </div>

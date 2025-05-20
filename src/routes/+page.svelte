@@ -13,6 +13,7 @@
 	let trueItems: number = 0;
 	let clickedItem: number = 0;
 	let subscription: RealtimeChannel | null = null;
+	let componentKey = 0; // Key for forcing reload
 
 	// Fetch initial data
 	async function fetchData(): Promise<void> {
@@ -37,6 +38,7 @@
 		} else if (payload.eventType === 'DELETE') {
 			items = items.filter((item) => item.id !== payload.old.id);
 		}
+		componentKey += 1; // Change key to force reload
 	}
 
 	function createTypedChannel() {
@@ -80,12 +82,14 @@
 
 <Menu totalClicked={trueItems} userClicked={clickedItem} />
 <div class="flex h-auto w-full flex-col items-center pt-24">
-	<div
-		class="grid w-auto max-w-7xl grid-flow-row grid-cols-5 gap-2 px-4 pb-12 sm:grid-cols-8 md:grid-cols-16 xl:grid-cols-25"
-	>
-		{#each items as item (item.id)}
-			<Switch state={item.state} id={item.id} bind:clickedItem color={item.color} />
-		{/each}
-	</div>
+	{#key componentKey}
+		<div
+			class="grid w-auto max-w-7xl grid-flow-row grid-cols-5 gap-2 px-4 pb-12 sm:grid-cols-8 md:grid-cols-16 xl:grid-cols-25"
+		>
+			{#each items as item (item.id)}
+				<Switch state={item.state} id={item.id} bind:clickedItem color={item.color} />
+			{/each}
+		</div>
+	{/key}
 </div>
 <Footer />
